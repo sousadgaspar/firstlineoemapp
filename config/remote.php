@@ -53,4 +53,5 @@ return [
         'web' => ['production'],
     ],
 
+    ],
 ];
