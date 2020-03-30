@@ -8,7 +8,7 @@ return [
         'TCRLS01' => [
             'host'      => env('TCRLS01'),
             'username'  => env('SMSC_USER'),
-            'password'  => '', // no password
+            'password'  => env('SMSC_PASSWORD'),
             'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
@@ -19,7 +19,7 @@ return [
         'TCRLS02' => [
             'host'      => env('TCRLS02'),
             'username'  => env('SMSC_USER'),
-            'password'  => '', // no password
+            'password'  => env('SMSC_PASSWORD'),
             'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
@@ -30,7 +30,7 @@ return [
         'TCRLS03' => [
             'host'      => env('TCRLS03'),
             'username'  => env('SMSC_USER'),
-            'password'  => '', // no password
+            'password'  => env('SMSC_PASSWORD'),
             'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
@@ -41,7 +41,7 @@ return [
          'TCRLS04' => [
             'host'      => env('TCRLS04'),
             'username'  => env('SMSC_USER'),
-            'password'  => '', // no password
+            'password'  => env('SMSC_PASSWORD'),
             'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
