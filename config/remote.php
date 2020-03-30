@@ -9,7 +9,7 @@ return [
             'host'      => env('TCRLS01'),
             'username'  => env('SMSC_USER'),
             'password'  => '', // no password
-            'key'       => '/home/Admin/.ssh/id_rsa',
+            'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
             'agent'     => '',
@@ -20,7 +20,7 @@ return [
             'host'      => env('TCRLS02'),
             'username'  => env('SMSC_USER'),
             'password'  => '', // no password
-            'key'       => '/home/Admin/.ssh/id_rsa',
+            'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
             'agent'     => '',
@@ -31,7 +31,7 @@ return [
             'host'      => env('TCRLS03'),
             'username'  => env('SMSC_USER'),
             'password'  => '', // no password
-            'key'       => '/home/Admin/.ssh/id_rsa',
+            'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
             'agent'     => '',
@@ -42,7 +42,7 @@ return [
             'host'      => env('TCRLS04'),
             'username'  => env('SMSC_USER'),
             'password'  => '', // no password
-            'key'       => '/home/Admin/.ssh/id_rsa',
+            'key'       => env('PRIVATE_SSH_KEY'),
             'keytext'   => '',
             'keyphrase' => '',
             'agent'     => '',
