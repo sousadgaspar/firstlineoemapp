@@ -3,28 +3,27 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Collective\Remote\SSH;
+use App\Action;
 
 
 
 class Command extends Model
 {
-    public function runSSHCommand( array $server, array $comands ) {
+		
+		public function runSSHCommads ( string $server, array $commands) {
 
-    	$commandResul = '';
+			$result = '';
+		
+			\SSH::into($server)->run($commands, function ($output) use (&$result) {
 
-    	SSH::into($server)->run([
+				$result .= $output;
 
-    		implode(';', $comands)
+			});
 
-    	], function ($result){
+			return $result;
 
-    		$commandResult += $result . PHP_EOL;
+		}
 
-    	});
 
-    	return $commandResult;
-
-    }
 }
