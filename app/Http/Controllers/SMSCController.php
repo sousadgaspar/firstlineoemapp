@@ -16,7 +16,7 @@ class SMSCController extends Controller
 
         $serverStatus['occsConnections'] = $command->runSSHCommads(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_CONNECTION_WITH_OCCS);
 
-
+        $serverStatus['partitionsStatus'] = $command->runSSHCommads(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_PARTITIONS);
 
 
         return view ('smsc.tcrls01', compact('serverStatus'));

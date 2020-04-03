@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Action extends Model
 {
     //Hardware checks
-    const CHECK_MEMORY_STATUS = ["free -h | head -2 | awk -F\" \" '{print $2\"\t\t\"$3\"\t\t\"$4}' | sed s/used/Total/g | sed s/free/Used/g | sed s/shared/Free/g"];
-    const CHECK_PARTITIONS = ['df -ha'];
+    const CHECK_MEMORY_STATUS = ["free -h | head -2 | awk -F\" \" '{print $2\"\t\t\"$3\"\t\"$4}' | sed s/used/Total/g | sed s/free/Used/g | sed s/shared/Free/g"];
+    const CHECK_PARTITIONS = ["df -h | egrep -v '^tmpf|^dev|.boot$'"];
     const CHECK_JBOSS_STATUS = ['ps -ef | grep jboss'];
     const CHECK_MYSQL_STATUS = ['service mysql status'];
     const CHECK_MCI_PROCESS_STATUS = ['/apps/omn/bin/mci list | grep -v Running'];
