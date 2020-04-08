@@ -12,11 +12,11 @@ class SMSCController extends Controller
     public function tcrls01 () {
 
         $command = new Command();
-        $serverStatus['memoryStatus'] = $command->runSSHCommads(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_MEMORY_STATUS);
+        $serverStatus['memoryStatus'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_MEMORY_STATUS);
 
-        $serverStatus['occsConnections'] = $command->runSSHCommads(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_CONNECTION_WITH_OCCS);
+        $serverStatus['occsConnections'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_CONNECTION_WITH_OCCS);
 
-        $serverStatus['partitionsStatus'] = $command->runSSHCommads(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_PARTITIONS);
+        $serverStatus['partitionsStatus'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_PARTITIONS);
 
 
         return view ('smsc.tcrls01', compact('serverStatus'));

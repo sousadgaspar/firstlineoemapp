@@ -8,7 +8,7 @@ class DashBoardController extends Controller
 {
     
     public function index () {
-
+        
         return view('index');
 
     }

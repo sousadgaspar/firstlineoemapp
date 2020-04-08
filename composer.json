@@ -1,11 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "Unitel/FirstLineOnmApp",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A simplified Operation and Maintanance app for Value Added Services Platforms.",
     "keywords": [
-        "framework",
-        "laravel"
+        "Unitel",
+        "Operation and Maintanance"
     ],
+    "files": [
+        "App/Helpers/Helper.php"
+    ], 
     "license": "MIT",
     "require": {
         "php": "^7.2.5",

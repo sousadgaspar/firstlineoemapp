@@ -11,7 +11,7 @@ use App\Action;
 class Command extends Model
 {
 		
-		public function runSSHCommads ( string $server, array $commands) {
+		public function runSSHCommands ( string $server, array $commands) {
 
 			$result = '';
 		
