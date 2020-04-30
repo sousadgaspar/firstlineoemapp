@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashBoardController@index');
 
-
 Route::get('/dashboard', 'DashBoardController@index');
-Route::get('/trace/msisdn', 'DashBoardController@traceMSISDN');
-Route::get('/trace/esme', 'DashBoardController@traceESME');
-
-Route::get('/systems', 'SystemController@index');
 
 //SMSC routes
-Route::get('/systems/smsc', 'SystemController@smsc');
-Route::get('/smsc/tcrls01', 'SMSCController@tcrls01');
-Route::get('/smsc/tcrls02', 'SMSCController@tcrls02');
-Route::get('/smsc/tcrls03', 'SMSCController@tcrls03');
-Route::get('/smsc/tcrls04', 'SMSCController@tcrls04');
+Route::get('/smsc', 'SMSCController@index');
+Route::get('/smsc/{id}', 'SMSCController@show');
+
+//Solution
+Route::get('/solution/create', 'SolutionController@create');
+
+//Server
+Route::get('/server', 'ServerController@index');
+Route::get('/server/create', 'ServerController@create');
+Route::post('/server/store', 'ServerController@store');
 
 //Session routes
 Route::get('/login', 'SessionController@login');

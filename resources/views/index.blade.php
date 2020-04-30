@@ -1,7 +1,7 @@
 
 @extends('template.master')
 
-@section('content')
+@section('content') 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 

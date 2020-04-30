@@ -15,6 +15,7 @@ class Action extends Model
     const CHECK_SCI_PROCESS_STATUS = ['/apps/omn/bin/sci -list | grep -v Running'];
     const CHECK_BCI_PROCESS_STATUS = ['/apps/omn/bin/bci -listsev1s'];
     const CHECK_CONNECTION_WITH_OCCS = ['netstat -an | grep -w 3868 | wc -l']; //integer normal state 8 if above 1 has no connecion
+    const GET_HEALTHCHECK = ['/home/firstlineonmapp/firstlineonmacctions.sh'];
 
 
     //Basic SMSC Actions

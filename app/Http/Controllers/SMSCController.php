@@ -9,39 +9,30 @@ use App\Command;
 class SMSCController extends Controller
 {
     
-    public function tcrls01 () {
+    public function index () {
 
         $command = new Command();
-        $serverStatus['memoryStatus'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_MEMORY_STATUS);
+        // $serverStatus['memoryStatus'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_MEMORY_STATUS);
 
-        $serverStatus['occsConnections'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_CONNECTION_WITH_OCCS);
+        // $serverStatus['occsConnections'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_CONNECTION_WITH_OCCS);
 
-        $serverStatus['partitionsStatus'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_PARTITIONS);
+        // $serverStatus['partitionsStatus'] = $command->runSSHCommands(config('remote.connections')['TCRLS01']['hostName'], Action::CHECK_PARTITIONS);
 
+        $healthCheck = $command->runSSHCommands(config('remote.connections')['TCRLS03']['hostName'], Action::GET_HEALTHCHECK);
+
+        $healthCheck = parseToArray($healthCheck);
+        dd(getRowKPI('memoryStatus', $healthCheck));
+
+        return;
 
         return view ('smsc.tcrls01', compact('serverStatus'));
 
     }
 
 
-    public function tcrls02 () {
-
-        return view ('smsc.tcrls02');
+    public function show (Request $request) {
 
     }
 
-
-    public function tcrls03 () {
-
-        return view ('smsc.tcrls03');
-
-    }
-
-
-    public function tcrls04 () {
-
-        return view ('smsc.tcrls04');
-
-    }
 
 }
