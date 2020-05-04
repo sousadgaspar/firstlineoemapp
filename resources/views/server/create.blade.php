@@ -42,16 +42,19 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
-                <input type="text" 
+              <div class="form-group row">
+                <div class="col-sm-12 mb-3 mb-sm-0">
+                  <input type="text" 
                         class="form-control form-control-user" 
                         id="serverIP" 
                         placeholder="IP: exemplo: 192.168.0.0">
-              </div>
-
-              <div class="col-sm-6">
-                  <input type="submit" value="Cadastrar" class="btn btn-primary btn-user btn-block " id="">
                 </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-12 mb-3 mb-sm-0">
+                <input type="submit" value="Cadastrar" class="btn btn-primary btn-user btn-block " id="">
+                </div>
+              </div>
               <hr>
             </form>
             <div class="text-center">
