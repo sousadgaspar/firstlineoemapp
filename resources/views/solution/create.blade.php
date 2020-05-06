@@ -1,4 +1,4 @@
-@extends('template.master');
+@extends('template.master')
 
 @section ('content')
 
@@ -21,14 +21,14 @@
 
               <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder=" Nome da solu&ccedil;&atilde;o">
+                  <input type="text" name="name" class="form-control form-control-user" id="exampleFirstName" placeholder=" Nome da solu&ccedil;&atilde;o">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
                   <textarea 
                     style="width: 100%"
-                    name="solutionDescription" 
+                    name="description" 
                     class="form-control form-control-user" 
                     placeholder="Descri&ccedil;&atilde;o da solu&ccedil;&atilde;o">Descri&ccedil;&atilde;o da solu&ccedil;&atilde;o
                   </textarea>
@@ -43,6 +43,17 @@
               <p>Dica:</p>
             </div>
             <div class="text-center">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
               <p>
                 1. Digite o nome da solu&ccedil;&atilde;o. (Ex.: SMSC) <br>
                 2. Digite uma breve descri&ccedil;&atilde;o da solu&ccedil;&atilde;o.

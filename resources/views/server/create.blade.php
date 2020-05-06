@@ -37,8 +37,8 @@
               <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
                   <select name="location" id="" class="form-control form-control-user">
-                      <option value="solutionId">Luanda Sul</option>
-                      <option value="solutionId">Filda</option>
+                      <option value="solutionLocation1">Luanda Sul</option>
+                      <option value="solutionLocation2">Filda</option>
                   </select>
                 </div>
               </div>

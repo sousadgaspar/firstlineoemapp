@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\StoreSolution;
 use Illuminate\Http\Request;
 use App\Solution;
+
 
 class SolutionController extends Controller
 {
     public function index () {
-
+        return view('solution.index');
     }
 
     public function show () {
@@ -19,22 +20,18 @@ class SolutionController extends Controller
         return view('solution.create');
     }
 
-    public function store (Request $request) {
-
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-
-        $solution = new Solution();
-        $solution->name = $request->name;
-        $solution->description = $request->description;
-
+    public function store (StoreSolution $request) {
+        
         try {
-            $solution->save();
+            $solution = Solution::create([
+                'name' => $request->name,
+                'description' => $request->description
+            ]);
 
-            $this->back();
+            return view('solution.index', compact('solution'));
+
         } catch(Exception $e) {
-            $this->back()->withData()->withErrors();
+            return back()->withInput()->withErrors();
         }
 
     }
