@@ -24,7 +24,7 @@ class StoreSolution extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required',
+            'name' => 'bail|unique:solutions|required',
             'description' => 'required|min:10',
         ];
     }
@@ -33,6 +33,7 @@ class StoreSolution extends FormRequest
     public function messages () {
         return [
             'name.required' => 'Ups! parece que esqueceu de digitar o nome da solução',
+            'name.unique' => 'O nome da solução deve ser único. O que digitou já existe.',
             'description.required' => 'Ups! escreva uma descrição para a solução',
             'description.min' => 'O campo descrição deve conter pelo menos 10 letras'
         ];
