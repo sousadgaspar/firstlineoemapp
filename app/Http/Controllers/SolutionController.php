@@ -9,7 +9,9 @@ use App\Solution;
 class SolutionController extends Controller
 {
     public function index () {
-        return view('solution.index');
+        $solutions = Solution::all();
+
+        return view('solution.index', compact('solutions'));
     }
 
     public function show () {
@@ -17,6 +19,7 @@ class SolutionController extends Controller
     }
 
     public function create () {
+
         return view('solution.create');
     }
 
