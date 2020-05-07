@@ -24,6 +24,18 @@
               </div>
           @endIf
 
+          @if(isset($status))
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Solução actualizada com sucesso.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          @endIf
+
           <br>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -38,6 +50,7 @@
                       <th>Name</th>
                       <th>Descrição</th>
                       <th>Servidores</th>
+                      <th>Acções</th>
                     </tr>
                   </thead>
 
@@ -54,6 +67,15 @@
                               <a href="/server/{{$server->id}}"> {{ $server->name }} </a>
                             @endForeach
                           @endIf
+                        </td>
+                        <td>
+                          <a href="/solution/delete/{{$solution->id}}" 
+                              id="deleteSolutionButton" 
+                              onclick="preventDelete" 
+                              class="btn btn-danger btn-sm">
+                          Apagar</a>
+
+                          <a href="/solution/show/{{$solution->id}}" class="btn btn-secondary btn-sm">Modificar</a>
                         </td>
                       </tr>
 

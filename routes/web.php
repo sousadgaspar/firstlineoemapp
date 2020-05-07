@@ -23,8 +23,12 @@ Route::get('/smsc/{id}', 'SMSCController@show');
 
 //Solution
 Route::get('/solution', 'SolutionController@index');
+Route::get('/solution/show/{id}', 'SolutionController@show');
 Route::get('/solution/create', 'SolutionController@create');
 Route::post('/solution/store', 'SolutionController@store');
+Route::post('/solution/update', 'SolutionController@update');
+Route::get('/solution/delete/{id}', 'SolutionController@delete');
+Route::get('/solution/update/{id}', 'SolutionController@show');
 
 //Server
 Route::get('/server', 'ServerController@index');

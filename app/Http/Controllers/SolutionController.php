@@ -14,8 +14,10 @@ class SolutionController extends Controller
         return view('solution.index', compact('solutions'));
     }
 
-    public function show () {
+    public function show ($solution) {
+        $solution = Solution::find($solution);
 
+        return view("solution.update",compact('solution'));
     }
 
     public function create () {
@@ -37,5 +39,25 @@ class SolutionController extends Controller
             return back()->withInput()->withErrors();
         }
 
+    }
+
+    public function delete ($solution) {
+        dd("You're trying to delete " . $solution);
+    }
+
+
+    public function update (StoreSolution $request) {
+        $solution = Solution::find($request->id);
+
+        $solution->name = $request->name;
+        $solution->description = $request->description;
+
+        try {
+                $solution->save();
+                $request->session()->flash('status', 'Solução actualizada com sucesso.');
+                return view('solution.index');
+        } catch(PDOException $e) {
+
+        }
     }
 }

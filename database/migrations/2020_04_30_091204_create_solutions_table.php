@@ -14,9 +14,11 @@ class CreateSolutionsTable extends Migration
     public function up()
     {
         Schema::create('solutions', function (Blueprint $table) {
+            $table->softDeletes();
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
