@@ -21,16 +21,18 @@
 
               <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
-                  <input type="text" name="name" class="form-control form-control-user" id="exampleFirstName" placeholder=" Nome da solu&ccedil;&atilde;o">
+                  <label for="name">Nome da solução:</label>
+                  <input type="text" name="name" class="form-control form-control-user" id="exampleFirstName" placeholder="">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
+                  <label for="description">Descrição:</label>
                   <textarea 
                     style="width: 100%"
                     name="description" 
                     class="form-control form-control-user" 
-                    placeholder="Descri&ccedil;&atilde;o da solu&ccedil;&atilde;o">Descri&ccedil;&atilde;o da solu&ccedil;&atilde;o
+                    placeholder="Descri&ccedil;&atilde;o da solu&ccedil;&atilde;o">
                   </textarea>
                 </div>
               </div>
@@ -39,10 +41,7 @@
               </div>
               <hr>
             </form>
-            <div class="text-center">
-              <p>Dica:</p>
-            </div>
-            <div class="text-center">
+            <div class="">
 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -53,11 +52,6 @@
                     </ul>
                 </div>
             @endif
-
-              <p>
-                1. Digite o nome da solu&ccedil;&atilde;o. (Ex.: SMSC) <br>
-                2. Digite uma breve descri&ccedil;&atilde;o da solu&ccedil;&atilde;o.
-              </p>
             </div>
           </div>
         </div>

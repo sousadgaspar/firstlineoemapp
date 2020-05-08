@@ -8,10 +8,17 @@ use App\Solution;
 
 class SolutionController extends Controller
 {
-    public function index () {
-        $solutions = Solution::all();
 
-        return view('solution.index', compact('solutions'));
+    public function __construct() {
+
+        \View::composer('solution.index', function ($view) {
+            $view->with('solutions', Solution::all());
+        });
+    }
+
+    public function index () {
+    
+        return view('solution.index');
     }
 
     public function show ($solution) {
@@ -54,10 +61,9 @@ class SolutionController extends Controller
 
         try {
                 $solution->save();
-                $request->session()->flash('status', 'Solução actualizada com sucesso.');
-                return view('solution.index');
+                return view('solution.index')->with('status', $solution->name . ' actualizado com sucesso.');
         } catch(PDOException $e) {
-
+                return back()->with('errors', 'Não foi possivel actualizar a solução ' . $solution->name);
         }
     }
 }

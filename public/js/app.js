@@ -7,3 +7,6 @@ require('./bootstrap');
     let deleteSolutionButton = document.querySelector("#deleteSolutionButton");
   });
 
+function goBack() {
+  window.history.back();
+}

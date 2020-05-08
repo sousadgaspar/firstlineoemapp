@@ -41,8 +41,13 @@
                     </textarea>
                   </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-md-6">
                     <input type="submit" value="Actualizar" class="btn btn-primary btn-user btn-block " id="">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="" value="Cancelar" onclick="goBack()" class="btn btn-secondary btn-user btn-block " id="">  
+                  </div>
                 </div>
                 <hr>
               @else
