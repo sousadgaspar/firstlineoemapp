@@ -71,7 +71,7 @@
                         <td>
                           <a href="/solution/delete/{{$solution->id}}" 
                               id="deleteSolutionButton" 
-                              onclick="preventDelete" 
+                              onclick="preventLivePage()" 
                               class="btn btn-danger btn-sm">
                           Apagar</a>
 

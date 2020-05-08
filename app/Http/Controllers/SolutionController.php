@@ -49,7 +49,19 @@ class SolutionController extends Controller
     }
 
     public function delete ($solution) {
-        dd("You're trying to delete " . $solution);
+        $solution = Solution::find($solution);
+
+        try{
+
+            if($solution->delete()){
+                return view('solution.index')->with('status', $solution->name . ' apagado com sucesso.');
+            }
+
+        } catch(PDOException $e) {
+            return back()->with('errors', 'Não foi possivel apagar a solução ' . $solution->name);
+        }
+
+
     }
 
 
