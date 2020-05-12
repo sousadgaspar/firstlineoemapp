@@ -53,9 +53,21 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Tarefas:</h6>
+            <h6 class="collapse-header">Soluções:</h6>
             <a class="collapse-item" href="/solution/create">Adicionar solu&ccedil;&atilde;o</a>
+            <a class="collapse-item" href="/solution">Ver todas as soluções</a>
+            <hr>
+            <h6 class="collapse-header">Servidores:</h6>
             <a class="collapse-item" href="/server/create">Adicionar servirdor</a>
+            <a class="collapse-item" href="/server">Ver servidores</a>
+            <hr>
+            <h6 class="collapse-header">Comandos:</h6>
+            <a class="collapse-item" href="/server/create">Configurar tarefa</a>
+            <a class="collapse-item" href="/server">Ver tarefas</a>
+            <hr>
+            <h6 class="collapse-header">Interfaces:</h6>
+            <a class="collapse-item" href="/server/create">Adicionar Interfaces</a>
+            <a class="collapse-item" href="/server">Ver Interfaces</a>
           </div>
         </div>
       </li>

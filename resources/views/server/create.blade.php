@@ -3,18 +3,18 @@
 @section ('content')
 
 
-<div class="container">
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Adicionar Servidor</h1>
+  <p class="mb-4">Nesta sessão você pode configurar um novo servidor para posteriormente adicionar comandos de formas a serem executados em interfaces gráficas. </p>
 
   <div class="card o-hidden border-0 shadow-lg my-5">
     <div class="card-body p-0">
       <!-- Nested Row within Card Body -->
       <div class="row">
-        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+        <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
         <div class="col-lg-7">
           <div class="p-5">
-            <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Adicionar novo servidor</h1>
-            </div>
             <form class="user" action="/server/store" method="POST">
 
               @csrf
@@ -57,15 +57,9 @@
               </div>
               <hr>
             </form>
-            <div class="text-center">
-              <p>Dica:</p>
-            </div>
-            <div class="text-center">
-              <p>
-                1. Digite o nome t&eacute;cnico do servidor. (Ex.: TCRLS01) <br>
-                2. Digite o IP de Opera&ccedil;&atilde;o e Manuten&ccedil;&atilde;o
-              </p>
-            </div>
+
+            <a href="/solution">Ver todos os servidores</a>
+
           </div>
         </div>
       </div>

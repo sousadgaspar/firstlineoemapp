@@ -76,6 +76,7 @@
                           Apagar</a>
 
                           <a href="/solution/show/{{$solution->id}}" class="btn btn-secondary btn-sm">Modificar</a>
+                          <a href="/server/create/{{$solution->id}}" class="btn btn-info btn-sm">Novo servidor</a>
                         </td>
                       </tr>
 
