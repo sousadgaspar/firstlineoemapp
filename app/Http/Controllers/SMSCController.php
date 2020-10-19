@@ -31,7 +31,7 @@ class SMSCController extends Controller
 
 
     public function show (Request $request) {
-
+        return view ('server.show');
     }
 
 
