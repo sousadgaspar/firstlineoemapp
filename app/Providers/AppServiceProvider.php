@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        \View::composer('template.sidebar', function($view) {
+            $view->with('solutions', \App\Solution::all());
+        });
     }
 
     /**

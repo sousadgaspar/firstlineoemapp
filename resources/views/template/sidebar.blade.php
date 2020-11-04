@@ -26,24 +26,27 @@
         Acesso rapido
       </div>
 
+
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-server"></i>
-          <span>SMSC</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Traffic Controls:</h6>
+      @if(isset($solutions))
+        @foreach($solutions as $solution)
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{$solution->id}}" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-server"></i>
+              <span>{{ $solution->name }}</span>
+            </a>
+            <div id="collapse{{$solution->id}}" class="collapse" aria-labelledby="heading{{$solution->id}}" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                @foreach($solution->servers as $server)
+                  <!-- <h6 class="collapse-header">{{ $server->server_group }}</h6>   -->
+                  <a class="collapse-item" href="/server/{{$server->id}}">{{ $server->name }}</a>
 
-            @foreach(config('remote.connections') as $server)
-            
-              <a class="collapse-item" href="/smsc/{{strtolower($server['hostName'])}}">{{ $server['hostName'] }}</a>
-
-            @endForeach
-          </div>
-        </div>
-      </li>
+                @endForeach
+              </div>
+            </div>
+          </li>
+        @endForeach
+      @endIf
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
