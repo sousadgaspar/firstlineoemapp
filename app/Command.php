@@ -10,6 +10,7 @@ use App\Action;
 
 class Command extends Model
 {
+	public $table = 'commands';
 
 		public function server () {
 			return $this->belongsTo(Server::class);

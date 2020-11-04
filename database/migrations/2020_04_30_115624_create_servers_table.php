@@ -15,10 +15,14 @@ class CreateServersTable extends Migration
     {
         Schema::create('servers', function (Blueprint $table) {
             $table->id();
-            $table->string('server_name');
-            $table->string('server_ip');
+            $table->string('name');
+            $table->string('ip');
+            $table->string('access_protocol')->nullable();
+            $table->string('user');
+            $table->string('password');
             $table->integer('solution_id');
-            $table->string('server_location')->nullable();
+            $table->string('server_group');
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }

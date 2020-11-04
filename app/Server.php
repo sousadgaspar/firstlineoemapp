@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Server extends Model
 {
+    protected $fillable = ['name', 'solution_id', 'server_group', 'ip', 'user', 'password', 'access_protocol', 'location'];
+
     public function solution () {
         return $this->bolongsTo(Solution::class);
     }

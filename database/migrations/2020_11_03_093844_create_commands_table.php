@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSolutionsTable extends Migration
+class CreateCommandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSolutionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('solutions', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::create('commands', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('icon')->nullable();
-            $table->boolean('status')->default(true);
+            $table->string('name')->unique();
+            $table->string('command_sequence');
+            $table->boolean('isReadOnly');
+            $table->boolean('returnOutput');
+            $table->integer('server_id');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSolutionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solutions');
+        Schema::dropIfExists('commands');
     }
 }

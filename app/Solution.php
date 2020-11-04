@@ -12,7 +12,7 @@ class Solution extends Model
 
     use SoftDeletes;
 
-    public function server () {
+    public function servers () {
         return $this->hasMany(Server::class);
     }
 }
