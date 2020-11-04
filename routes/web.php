@@ -32,8 +32,15 @@ Route::get('/solution/update/{id}', 'SolutionController@show');
 
 //Server
 Route::get('/server', 'ServerController@index');
+Route::get('/server/{id}', 'ServerController@show')->where('id', '[0-9]+');
 Route::get('/server/create', 'ServerController@create');
 Route::post('/server/store', 'ServerController@store');
+
+//commands/tasks
+Route::get('/task/create', 'CommandController@create');
+Route::post('/task/store', 'CommandController@store');
+Route::get('/tasks', 'CommandController@index');
+Route::get('/task/{id}', 'CommandController@show');
 
 //Session routes
 Route::get('/login', 'SessionController@login');

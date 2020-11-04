@@ -17,8 +17,11 @@ class CreateCommandsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('command_sequence');
-            $table->boolean('isReadOnly');
-            $table->boolean('returnOutput');
+            $table->string('description')->nullable();
+            $table->boolean('isReadOnly')->nullable();
+            $table->string('expectedResult')->nullable();
+            $table->string('wrongResults')->nullable();
+            $table->string('explanation')->nullable();
             $table->integer('server_id');
             $table->timestamps();
         });

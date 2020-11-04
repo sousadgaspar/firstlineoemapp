@@ -17,7 +17,6 @@ class ServerController extends Controller
     }
 
     public function create () {
-
         $solutions = Solution::all();
         return view('server.create', compact('solutions'));
     }
@@ -52,8 +51,9 @@ class ServerController extends Controller
 
     }
 
-    public function show (Request $request) {
-
+    public function show ($id) {
+        $server = Server::find($id);
+        return view('server.show', compact('server'));
     }
 
     public function delete (Request $request) {

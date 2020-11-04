@@ -65,12 +65,9 @@
             <a class="collapse-item" href="/server">Ver servidores</a>
             <hr>
             <h6 class="collapse-header">Comandos:</h6>
-            <a class="collapse-item" href="/server/create">Configurar tarefa</a>
-            <a class="collapse-item" href="/server">Ver tarefas</a>
+            <a class="collapse-item" href="/task/create">Configurar tarefa</a>
+            <a class="collapse-item" href="/tasks">Ver tarefas</a>
             <hr>
-            <h6 class="collapse-header">Interfaces:</h6>
-            <a class="collapse-item" href="/server/create">Adicionar Interfaces</a>
-            <a class="collapse-item" href="/server">Ver Interfaces</a>
           </div>
         </div>
       </li>
