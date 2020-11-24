@@ -15,4 +15,8 @@ class Solution extends Model
     public function servers () {
         return $this->hasMany(Server::class);
     }
+
+    public function groups () {
+        return $this->hasMany(Groups::class);
+    }
 }

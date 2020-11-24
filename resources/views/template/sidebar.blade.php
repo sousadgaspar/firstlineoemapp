@@ -60,13 +60,17 @@
             <a class="collapse-item" href="/solution/create">Adicionar solu&ccedil;&atilde;o</a>
             <a class="collapse-item" href="/solution">Ver todas as soluções</a>
             <hr>
+            <h6 class="collapse-header">Grupos:</h6>
+            <a class="collapse-item" href="/group/create">Adicionar novo grupo</a>
+            <a class="collapse-item" href="/group">Ver Grupos</a>
+            <hr>
             <h6 class="collapse-header">Servidores:</h6>
             <a class="collapse-item" href="/server/create">Adicionar servirdor</a>
             <a class="collapse-item" href="/server">Ver servidores</a>
             <hr>
             <h6 class="collapse-header">Comandos:</h6>
-            <a class="collapse-item" href="/task/create">Configurar tarefa</a>
-            <a class="collapse-item" href="/tasks">Ver tarefas</a>
+            <a class="collapse-item" href="/command/create">Configurar tarefa</a>
+            <a class="collapse-item" href="/commands">Ver tarefas</a>
             <hr>
           </div>
         </div>

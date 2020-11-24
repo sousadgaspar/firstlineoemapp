@@ -39,20 +39,21 @@
                   </div>
               </div>
               <div class="form-group row">
-                <div class="col-sm-12 mb-3 mb-sm-0">
-                  <input 
-                    type="text" 
-                    class="form-control form-control-user" 
-                    id="server_group" 
-                    name="server_group" 
-                    placeholder="Grupo do servidor, por exemplo: Traffic Controllers">
-                </div>
+                <div class="col-sm-12">
+                    <select name="group_id" id="group_id" class="form-control form-control-user">
+                      @if(isset($groups))
+                        @foreach($groups as $group)
+                          <option value="{{ $group->id }}" >{{ $group->name }}</option>
+                        @endForeach
+                      @endIf
+                    </select>
+                  </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
-                  <select name="server_group" id="" class="form-control form-control-user">
-                      <option value="1">Luanda Sul</option>
-                      <option value="2">Filda</option>
+                  <select name="location" id="" class="form-control form-control-user">
+                      <option value="Luanda Sul">Luanda Sul</option>
+                      <option value="Filda">Filda</option>
                   </select>
                 </div>
               </div>

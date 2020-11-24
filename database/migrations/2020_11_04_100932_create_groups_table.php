@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServersTable extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateServersTable extends Migration
      */
     public function up()
     {
-        Schema::create('servers', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('ip');
-            $table->string('access_protocol')->nullable();
-            $table->string('user');
-            $table->string('password');
+            $table->string('description');
             $table->integer('solution_id');
-            $table->integer('group_id');
-            $table->string('location')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreateServersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servers');
+        Schema::dropIfExists('groups');
     }
 }

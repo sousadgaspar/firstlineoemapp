@@ -16,12 +16,13 @@ class CreateCommandsTable extends Migration
         Schema::create('commands', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('command_sequence');
+            $table->longText('command_sequence');
             $table->string('description')->nullable();
             $table->boolean('isReadOnly')->nullable();
-            $table->string('expectedResult')->nullable();
-            $table->string('wrongResults')->nullable();
-            $table->string('explanation')->nullable();
+            $table->boolean('isSuccessResultEmpty')->nullable();
+            $table->longText('expectedResult')->nullable();
+            $table->longText('wrongResults')->nullable();
+            $table->longText('explanation')->nullable();
             $table->integer('server_id');
             $table->timestamps();
         });

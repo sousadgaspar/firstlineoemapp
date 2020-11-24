@@ -1,0 +1,32 @@
+- Reiniciar as ligacoes SS7
+- Validar as ligacoes SS7
+- Reiniciar as ligacoes com o charging
+- Validar as ligacoes com o charging
+- Validas as ligacoes entre os nos internos do SMSC
+- Validar se esta a entrar SMS em cada um dos nos
+- Validar se as SMSs estao a ser terminadas
+- Verificar o volume de SMSs em Buffer
+
+
+return [
+        'default'='test',
+
+        'connections' => [
+ 'TCL2 => [host => env(TCL2_NAME), hostName => TCL2, username  => env(TCL2_USER), password  => env(TCL2_PASSWORD), timeout   => env('TCL2_TIMOUT'),],'
+ 'TCL2 => [host => env(TCL2_NAME), hostName => TCL2, username  => env(TCL2_USER), password  => env(TCL2_PASSWORD), timeout   => env(TCL2_TIMOUT),],'
+ 'TCL2 => [host => env(TCL2_NAME), hostName => TCL2, username  => env(TCL2_USER), password  => env(TCL2_PASSWORD), timeout   => env(TCL2_TIMOUT),],'
+                        'TCRLS01' => [
+                        'host'      => env('TCRLS01'),
+                        'hostName' => 'TCRLS01',
+                        'username'  => env('SMSC_USER_LS'),
+                        'password'  => env('SMSC_PASSWORD_LS'),
+                        'key'       => env('PRIVATE_SSH_KEY'),
+                        'keytext'   => '',
+                        'keyphrase' => '',
+                        'agent'     => '',
+                        'timeout'   => 10,
+                ],
+        ]
+
+
+]

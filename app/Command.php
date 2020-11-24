@@ -11,6 +11,16 @@ use App\Action;
 class Command extends Model
 {
 	public $table = 'commands';
+	protected $fillable = [
+							'name', 
+							'description', 
+							'command_sequence', 
+							'isReadOnly', 
+							'expectedResult', 
+							'wrongResults', 
+							'explanation', 
+							'server_id'
+							];
 
 		public function server () {
 			return $this->belongsTo(Server::class);
