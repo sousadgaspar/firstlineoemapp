@@ -54,7 +54,6 @@ class ServerController extends Controller
         } catch (Exception $e) {
             $e->getTrace();
         }
-
     }
 
     public function show ($id) {

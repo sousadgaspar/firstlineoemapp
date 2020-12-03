@@ -17,6 +17,6 @@ class Solution extends Model
     }
 
     public function groups () {
-        return $this->hasMany(Groups::class);
+        return $this->hasMany(Group::class);
     }
 }
