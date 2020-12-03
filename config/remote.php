@@ -5,6 +5,9 @@ return [
     'default' => 'test',
 
     'connections' => [
+ "AGWLS02" => ["host" => env("AGWLS02"), "hostName" => "AGWLS02", "username"  => env("AGWLS02_USER"), "password"  => env("AGWLS02_PASSWORD"), "timeout"   => env("AGWLS02_TIMOUT"),],
+ "AGWLS01" => ["host" => env("AGWLS01"), "hostName" => "AGWLS01", "username"  => env("AGWLS01_USER"), "password"  => env("AGWLS01_PASSWORD"), "timeout"   => env("AGWLS01_TIMOUT"),],
+ "DCR01" => ["host" => env("DCR01"), "hostName" => "DCR01", "username"  => env("DCR01_USER"), "password"  => env("DCR01_PASSWORD"), "timeout"   => env("DCR01_TIMOUT"),],
                         "TCRLS04" => [
                                         "host" => env("TCRLS04"), 
                                         "hostName" => "TCRLS04", 
