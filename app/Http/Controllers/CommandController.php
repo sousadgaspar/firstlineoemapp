@@ -27,8 +27,12 @@ class CommandController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'command_sequence' => 'required',
-            'server_id' => 'required'
         ]);
+
+        if(!isset($request->servers)){
+            $request->session()->flash('fails', 'Selecione pelo menos um servidor');
+            return view('command.create');
+        }
 
         try{
             $command = Command::create([
@@ -39,10 +43,14 @@ class CommandController extends Controller
                 'expectedResult' => $request->expectedResult,
                 'wrongResults' => $request->expectedResult,
                 'explanation' => $request->explanation,
-                'server_id' => $request->server_id,
             ]);
-
-            $request->session()->flash('message', 'Tarefa ' . $request->name . ' criada com sucesso.');
+            
+        foreach($request->servers as $serverId) {
+            $server = Server::find($serverId);
+            $command->servers()->attach($server);
+        }
+            
+        $request->session()->flash('message', 'Tarefa ' . $request->name . ' criada com sucesso.');
             return view('command.create');
         } catch(PDOException $error) {
             $request->session()->flash('fail', 'Falha ao criar a tarefa ' . $request->name . ': '. $error->getMessage());
@@ -51,13 +59,14 @@ class CommandController extends Controller
 
     }
 
-    public function execute ($id) {
+    public function execute ($server, $id) {
         $command = Command::find($id);
+        $server = Server::find($server);
         $command_sequence = explode(';', $command->command_sequence);
         if(count($command_sequence) > 1) {
             try{
-                \SSH::into($command->server->name)->define($command->name, $command_sequence);
-                \SSH::into($command->server->name)->run($command->name, function($output) use (&$result) {
+                \SSH::into($server->name)->define($command->name, $command_sequence);
+                \SSH::into($server->name)->run($command->name, function($output) use (&$result) {
                     $result .= $output . PHP_EOL;
                 });
                 return "<pre>" . $result . "</pre>";
@@ -68,11 +77,10 @@ class CommandController extends Controller
         }
 
         try{
-            \SSH::into($command->server->name)->run($command->command_sequence, function($output) use (&$result) {
+            \SSH::into($server->name)->run($command->command_sequence, function($output) use (&$result) {
                 $result .= $output . PHP_EOL;
             });
-            
-            $server = $command->server;
+
             return view('server.show', compact('result', 'server', 'command'));
 
         } catch(ErrorException $error) {

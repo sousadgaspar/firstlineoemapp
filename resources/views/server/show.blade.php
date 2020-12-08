@@ -104,7 +104,7 @@
                         <div class="col-sm-12">
                         @if(isset($server->commands))
                           @foreach($server->commands as $savedCommand)
-                            <a href="/server/execute/command/{{$savedCommand->id}}" class="btn btn-primary btn-icon-split btn-sm">
+                            <a href="/server/{{$server->id}}/execute/command/{{$savedCommand->id}}" class="btn btn-primary btn-icon-split btn-sm">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-terminal"></i>
                                 </span>
@@ -192,8 +192,8 @@
                 </div>
               </div>
             </div>
-          </div>
           @endIf
+          </div>
         </div>
         <!-- /.container-fluid -->
 @endSection

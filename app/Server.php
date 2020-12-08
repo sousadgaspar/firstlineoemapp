@@ -21,7 +21,7 @@ class Server extends Model
     }
 
     public function commands () {
-        return $this->hasMany(Command::class);
+        return $this->belongsToMany(Command::class);
     }
 
     public function writeToDotEnv () {

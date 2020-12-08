@@ -34,8 +34,10 @@ class GroupController extends Controller
                 'description' => $request->description,
                 'solution_id' => $request->solution_id,
             ]);
+
+            $solutions = Solution::all();
             $request->session()->flash('message', 'Grupo criado com sucesso');
-            return view('group.create');
+            return view('group.create', compact('solutions'));
         } catch(PDOException $error) {
             $request->session()->flash('fail', 'Erro ao gravar os dados do grupo. ' . $error->getMessage());
             return view('group.create');

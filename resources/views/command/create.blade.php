@@ -44,8 +44,8 @@
               </div>
               <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
-                  <label for="server_id">Servidor</label>
-                  <select name="server_id" id="" class="form-control form-control-user">
+                  <label for="server_id">Servidores</label>
+                  <select name="servers[]" id="" class="form-control form-control-user" multiple>
                     @if(isset($servers))
                       @foreach($servers as $server)
                         <option value="{{$server->id}}">{{ $server->name }} - {{ $server->group->name }} - {{ $server->solution->name}}</option>

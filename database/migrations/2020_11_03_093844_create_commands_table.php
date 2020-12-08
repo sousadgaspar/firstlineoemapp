@@ -23,7 +23,6 @@ class CreateCommandsTable extends Migration
             $table->longText('expectedResult')->nullable();
             $table->longText('wrongResults')->nullable();
             $table->longText('explanation')->nullable();
-            $table->integer('server_id');
             $table->timestamps();
         });
     }

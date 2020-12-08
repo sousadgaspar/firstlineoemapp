@@ -47,7 +47,7 @@ Route::get('/commands', 'CommandController@index');
 Route::get('/command/{id}', 'CommandController@show');
 
 //Command execussion
-Route::get('/server/execute/command/{id}', 'CommandController@execute')->where('id', '[0-9]+');
+Route::get('/server/{server}/execute/command/{id}', 'CommandController@execute')->where(['id'=>'[0-9]+', 'server'=>'[0-9]+']);
 
 //Session routes
 Route::get('/login', 'SessionController@login');
