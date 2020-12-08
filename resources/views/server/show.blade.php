@@ -34,7 +34,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold">Output Terminal @if(isset($command)){{ $command->name }}@endIf</h6>
+                    <h6 class="m-0 font-weight-bold">Terminal de output @if(isset($command)) '{{ $command->name }}' @endIf</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -58,7 +58,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold">Output Terminal  @if(isset($command)){{ $command->name }}@endIf</h6>
+                    <h6 class="m-0 font-weight-bold">Terminal de output @if(isset($command)) '{{ $command->name }}' @endIf</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -132,17 +132,19 @@
               <!-- Illustrations -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Informações do comando ou tarefa '{{ $command->name }}'</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Informações '{{ $command->name }}'</h6>
                 </div>
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-1">
                       <div class="text-left">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 8rem;" src="/img/undraw_server_cluster_jwwq.svg" alt="">
                       </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-11">
                       <label> <strong>Comando executado:</strong> '{{ $command->command_sequence }}'</label>
+                      <br />
+                      <label> <strong>Descrição:</strong> '{{ $command->description }}'</label>
                     </div>
                   </div>
                 </div>
@@ -155,7 +157,7 @@
               <!-- Illustrations -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Resultado experado '{{ $command->name }}'</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Resultado esperado '{{ $command->name }}'</h6>
                 </div>
                 <div class="card-body">
                   <div class="row">
@@ -167,26 +169,25 @@
               </div>
             </div>
             @endIf
-
-
           </div>
-          <div class="row">
 
-            @if(isset($command->expected_result))
+          @if(isset($command->explanation))
             <div class="col-lg-12 mb-4">
               <!-- Illustrations -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Formato do resultado esperado</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Detalhes adicionais '{{ $command->name }}'</h6>
                 </div>
                 <div class="card-body">
-                  <div class="col-md-3">
-                    <div class="text-left">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 16rem;" src="/img/undraw_Search_re_x5gq.svg" alt="">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <div class="text-left">
+                        <img class="img-fluid px-3 px-sm-3 mt-3 mb-4" style="width: 8rem;" src="/img/undraw_Search_re_x5gq.svg" alt="">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-9">
-                    <p>{{ $command->expected_result }}</p>
+                    <div class="col-md-11">
+                      <p>{{ $command->explanation }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
