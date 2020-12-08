@@ -6,42 +6,24 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">{{ $server->name }}</h1>
-            <small>{{ $server->server_group }}</small>
-          </div>
-
-          <h2 class="h6 mb-0 text-gray-800">TAREFAS</h2>
-          <hr>
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            @if(isset($server->commands))
-              @foreach($server->commands as $command)
-                <div class="col-xl-3 col-md-6 mb-4">
-                  <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ substr($command->description, 0, 55) }}</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <a href="/server/execute/command/{{$command->id}}" class="btn btn-primary btn-icon-split">{{ $command->name }}</a>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="fas fa-command fa-2x text-gray-300"></i>
-                        </div>
-                      </div>
-                    </div>
+          <div class="">
+            <h1 class="">{{ $server->name }}</h1>
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card-body">
+                    <div class='.bg-gray-100 p3'> {{ $server->solution->name }}: {{ $server->group->name }}</div>
+                    {{ $server->solution->description }}
                   </div>
                 </div>
-              @endForeach
-            @endIf
-
-            <hr>
+                <div class="col-md-4">
+                  <div class='.bg-gray-100 p3'> {{ $server->ip }}</div>
+                  {{ $server->location }}
+                </div>
+              </div>
+            </div>
           </div>
-
+          <h2 class="h6 mb-0 text-gray-800">{{ $server->description }}</h2>
           <!-- Content Row -->
 
           <div class="row">
@@ -52,7 +34,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold">Output do comando</h6>
+                    <h6 class="m-0 font-weight-bold">Output Terminal @if(isset($command)){{ $command->name }}@endIf</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -76,7 +58,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold">Output do comando</h6>
+                    <h6 class="m-0 font-weight-bold">Output Terminal  @if(isset($command)){{ $command->name }}@endIf</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -103,7 +85,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Informações do servidor</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Comados e tarefas</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -116,17 +98,27 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <ul>
-                      <li>Servidor: {{$server->name}}</li>
-                      <li>Descrição: {{$server->description}}</li>
-                      <li>Pertence a Solução: {{$server->solution->name}}</li>
-                      <li>Pertence ao grupo: {{$server->group->name}}</li>
-                      <li>IP: {{$server->ip}}</li>
-                      
-                      <li>Site: {{$server->location}}</li>
-                      
-                    </ul>
+                  <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 command-area">
+                      <div class="row">
+                        <div class="col-sm-12">
+                        @if(isset($server->commands))
+                          @foreach($server->commands as $savedCommand)
+                            <a href="/server/execute/command/{{$savedCommand->id}}" class="btn btn-primary btn-icon-split btn-sm">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-terminal"></i>
+                                </span>
+                                <span class="text">{{$savedCommand->name}}</span>
+                            </a>
+                            <p>
+                              {{ $savedCommand->description }}
+                            </p>
+                            <hr>
+                          @endforeach
+                        @endIf
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -135,12 +127,12 @@
 
           <!-- Content Row -->
           <div class="row">
-
-            <div class="col-lg-6 mb-4">
+            @if(isset($command))
+            <div class="col-lg-12 mb-4">
               <!-- Illustrations -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Mais informações do servidor</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Informações do comando ou tarefa '{{ $command->name }}'</h6>
                 </div>
                 <div class="card-body">
                   <div class="row">
@@ -150,37 +142,31 @@
                       </div>
                     </div>
                     <div class="col-md-8">
-                      <p><strong>Descrição da solução: </strong>{{ $server->solution->description }}</p>
-                      <p><strong>Descrição do grupo: </strong>{{ $server->group->description }}</p>
-                      <p>{{ $server->description }}</p>
+                      <label> <strong>Comando executado:</strong> '{{ $command->command_sequence }}'</label>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            @endIf
 
-            <div class="col-lg-6 mb-4">
+            @if(isset($command->expectedResult))
+            <div class="col-lg-12 mb-4">
               <!-- Illustrations -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Modo de funcionamento</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Resultado experado '{{ $command->name }}'</h6>
                 </div>
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-4">
-                      <div class="text-left">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 8rem;" src="/img/undraw_book_reading_kx9s.svg" alt="">
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <p><strong>Descrição da solução: </strong>{{ $server->solution->description }}</p>
-                      <p><strong>Descrição do grupo: </strong>{{ $server->group->description }}</p>
-                      <p>{{ $server->description }}</p>
+                    <div class="col-md-12 expectedResultCard">
+                      <label>@if(isset($command))<pre>{{ $command->expectedResult }}</pre> @endIf</label>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            @endIf
 
 
           </div>
@@ -207,7 +193,6 @@
             </div>
           </div>
           @endIf
-
         </div>
         <!-- /.container-fluid -->
 @endSection
