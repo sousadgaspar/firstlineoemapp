@@ -103,18 +103,20 @@
                       <div class="row">
                         <div class="col-sm-12">
                         @if(isset($server->commands))
-                          @foreach($server->commands as $savedCommand)
-                            <a href="/server/{{$server->id}}/execute/command/{{$savedCommand->id}}" class="btn btn-primary btn-icon-split btn-sm">
+                          @for($i=0; $i < count($server->commands); $i++)
+                            <a href="/server/{{$server->id}}/execute/command/{{$server->commands[$i]->id}}" class="btn btn-primary btn-icon-split btn-sm">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-terminal"></i>
                                 </span>
-                                <span class="text">{{$savedCommand->name}}</span>
+                                <span class="text">{{$server->commands[$i]->name}}</span>
                             </a>
                             <p>
-                              {{ $savedCommand->description }}
+                              {{ $server->commands[$i]->description }}
                             </p>
-                            <hr>
-                          @endforeach
+                            @if((count($server->commands) - 1) !== $i)
+                              <hr>
+                            @endIf
+                          @endfor
                         @endIf
                         </div>
                       </div>

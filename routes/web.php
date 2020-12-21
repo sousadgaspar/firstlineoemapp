@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'DashBoardController@index');
-
 Route::get('/dashboard', 'DashBoardController@index');
+Route::post('/users', 'UserController@index');
 
 
 //Solution

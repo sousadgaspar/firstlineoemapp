@@ -63,19 +63,6 @@ class CommandController extends Controller
         $command = Command::find($id);
         $server = Server::find($server);
         $command_sequence = explode(';', $command->command_sequence);
-        if(count($command_sequence) > 1) {
-            try{
-                \SSH::into($server->name)->define($command->name, $command_sequence);
-                \SSH::into($server->name)->run($command->name, function($output) use (&$result) {
-                    $result .= $output . PHP_EOL;
-                });
-                return "<pre>" . $result . "</pre>";
-            } catch(ErrorException $error) {
-                return $error->getMessage();
-            }
-
-        }
-
         try{
             \SSH::into($server->name)->run($command->command_sequence, function($output) use (&$result) {
                 $result .= $output . PHP_EOL;
