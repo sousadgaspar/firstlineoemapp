@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 class SessionController extends Controller
 {
     
-    public function login () {
+    public function create () {
 
         return view('session.login');
 
+    }
+
+    public function login () {
+        return view('session.login');
     }
 
 }
