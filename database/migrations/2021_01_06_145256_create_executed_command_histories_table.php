@@ -16,7 +16,7 @@ class CreateExecutedCommandHistoriesTable extends Migration
         Schema::create('executed_command_histories', function (Blueprint $table) {
             $table->id();
             $table->text('executed_command');
-            $table->longtext('Output');
+            $table->longtext('output')->nullable();
             $table->integer('user_id');
             $table->integer('server_id');
             $table->timestamps();

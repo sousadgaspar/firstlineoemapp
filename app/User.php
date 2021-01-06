@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function section () {
         return belongsTo(Section::class);
     }
+
+    public function executedCommandsHistory () {
+        return hasMany(ExecutedCommandHistory::class);
+    }
 }

@@ -1,14 +1,12 @@
 <?php
 
 namespace App;
-
+use App\Contracts\Command\Action;
 use Illuminate\Database\Eloquent\Model;
 use Collective\Remote\SSH;
-use App\Action;
 
 
-
-class Command extends Model
+class Command extends Action
 {
 	public $table = 'commands';
 	protected $fillable = [

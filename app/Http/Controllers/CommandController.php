@@ -74,7 +74,12 @@ class CommandController extends Controller
             //Produce a history Object for recording the command and the output
             $history = ExecutedCommandHistoryFactory::run();
 
-            dd($history);
+            $history->collect($command);
+            $history->setOutput($result);
+            $history->setUserId(\Auth::user()->id);
+            $history->setServerId($server->id);
+
+            $history->save();
 
             return view('server.show', compact('result', 'server', 'command'));
 
