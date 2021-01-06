@@ -24,6 +24,10 @@ class Server extends Model
         return $this->belongsToMany(Command::class);
     }
 
+    public function sections () {
+        return $this->belongsToMany(Section::class);
+    }
+
     public function writeToDotEnv () {
         $server = strtoupper(str_replace(" ", "_", $this->name));
         $serverName = $server . '_NAME';

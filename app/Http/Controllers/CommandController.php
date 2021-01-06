@@ -44,10 +44,12 @@ class CommandController extends Controller
                 'wrongResults' => $request->expectedResult,
                 'explanation' => $request->explanation,
             ]);
-            
-        foreach($request->servers as $serverId) {
-            $server = Server::find($serverId);
-            $command->servers()->attach($server);
+        
+        if(isset($request->servers)) {
+            foreach($request->servers as $serverId) {
+                $server = Server::find($serverId);
+                $command->servers()->attach($server);
+            }
         }
             
         $request->session()->flash('message', 'Tarefa ' . $request->name . ' criada com sucesso.');

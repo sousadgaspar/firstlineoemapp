@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Server;
 use App\Solution;
 use App\Group;
+use App\Section;
 
 class ServerController extends Controller
 {
@@ -20,13 +21,15 @@ class ServerController extends Controller
     public function create () {
         $solutions = Solution::all();
         $groups = Group::all();
-        return view('server.create', compact('solutions' , 'groups'));
+        $sections = Section::all();
+        return view('server.create', compact('solutions' , 'groups', 'sections'));
     }
 
     public function store (Request $request) {
         $this->validate($request, [
                 'name' => 'required',
                 'solution_id' => 'required',
+                'sections' => 'required',
                 'group_id' => 'required',
                 'ip' => 'required',
                 'user' => 'required',
@@ -45,6 +48,11 @@ class ServerController extends Controller
                     'location' => $request->location,
                 ]);
 
+                foreach($request->sections as $sectionId) {
+                    $section = Section::find($sectionId);
+                    $server->sections()->attach($sectionId);
+                }
+
                 $server->writeToDotEnv();
                 $server->writeToConfigRemote();
                 
@@ -52,7 +60,7 @@ class ServerController extends Controller
                 $request->session()->flash('message', 'Os dados do servidor foram gravados com sucesso.');
                 return back();
         } catch (Exception $e) {
-            $e->getTrace();
+            dd($e->getTrace());
         }
     }
 

@@ -12,4 +12,9 @@ class Section extends Model
         return hasMany(User::class);
     }
 
+
+    public function servers () {
+        return belongsToMany(Server::class);
+    }
+
 }

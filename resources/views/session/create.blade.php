@@ -13,7 +13,10 @@
           <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Bem vindo de volta!</h1>
           </div>
-          <form class="user" method="POST" action="/session/store">
+          <form class="user" method="POST" action="/session/start">
+
+            @csrf
+
             <div class="form-group">
               <input type="email" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Seu email...">
             </div>

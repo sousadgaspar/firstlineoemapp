@@ -50,6 +50,17 @@
                   </div>
               </div>
               <div class="form-group row">
+                <div class="col-sm-12">
+                    <select name="sections[]" id="sections" multiple class="form-control form-control-user">
+                      @if(isset($sections))
+                        @foreach($sections as $section)
+                          <option value="{{ $section->id }}" >{{ $section->name }}</option>
+                        @endForeach
+                      @endIf
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group row">
                 <div class="col-sm-12 mb-3 mb-sm-0">
                   <select name="location" id="" class="form-control form-control-user">
                       <option value="Luanda Sul">Luanda Sul</option>
