@@ -27,7 +27,7 @@ class ServerController extends Controller
 
     public function store (Request $request) {
         $this->validate($request, [
-                'name' => 'required',
+                'name' => 'required|unique:servers',
                 'solution_id' => 'required',
                 'sections' => 'required',
                 'group_id' => 'required',
@@ -71,6 +71,22 @@ class ServerController extends Controller
 
     public function delete (Request $request) {
 
+    }
+
+    public function all() {
+        $allServers = Server::all();
+
+        $filteredServers = array_map(function ($server) {
+            unset($server['password']);
+            unset($server['user']);
+            unset($server['solution_id']);
+            unset($server['created_at']);
+            unset($server['updated_at']);
+            unset($server['group_id']);
+
+            dd($server);
+        }, $allServers->toArray());
+        return $filteredServers->toJson();
     }
 
 }

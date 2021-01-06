@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Command;
 use App\Server;
 use Collective\Remote\SSH;
+use App\Factories\ExecutedCommandHistoryFactory;
 
 class CommandController extends Controller
 {
@@ -66,15 +67,19 @@ class CommandController extends Controller
         $server = Server::find($server);
         $command_sequence = explode(';', $command->command_sequence);
         try{
-            \SSH::into($server->name)->run($command->command_sequence, function($output) use (&$result) {
+            \SSH::into(strtoupper($server->name))->run($command->command_sequence, function($output) use (&$result) {
                 $result .= $output . PHP_EOL;
             });
+
+            //Produce a history Object for recording the command and the output
+            $history = ExecutedCommandHistoryFactory::run();
+
+            dd($history);
 
             return view('server.show', compact('result', 'server', 'command'));
 
         } catch(ErrorException $error) {
             return $error->getMessage();
         }
-
     }
 }
