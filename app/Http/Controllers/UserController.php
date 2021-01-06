@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Section;
 
 class UserController extends Controller
 {
@@ -15,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -22,9 +24,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Response $response)
+    public function create(Request $request)
     {
-        return $request->body();
+        $sections = Section::all();
+        return view('user.create', compact('sections'));
     }
 
     /**
@@ -38,9 +41,13 @@ class UserController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => hash::generate($request->password),
+                'password' => \Hash::make($request->password),
                 'section_id' => $request->section_id
             ]);
+
+            $request->session()->flash('message', 'Usuário criado com sucesso.');
+            return view('user.create');
+
         } catch(\PDOException $error) {
             dd('error when trying to create the user. ' . $error->getMessage());
         }

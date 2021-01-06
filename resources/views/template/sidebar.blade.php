@@ -81,6 +81,10 @@
             <a class="collapse-item" href="/section/create">Adicionar secção</a>
             <a class="collapse-item" href="/section">Ver todas as secções</a>
             <hr>
+            <h6 class="collapse-header"><strong>Gestão de usuários:</strong></h6>
+            <a class="collapse-item" href="/user/create">Novo usuário</a>
+            <a class="collapse-item" href="/user">Gerir usuários</a>
+            <hr>
           </div>
         </div>
       </li>

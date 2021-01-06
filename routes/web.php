@@ -16,6 +16,13 @@ Route::get('/', 'DashBoardController@index');//->middleware('auth');
 Route::get('/dashboard', 'DashBoardController@index');//->middleware('auth');
 Route::post('/users', 'UserController@index');//->middleware('auth');
 
+//User
+Route::get('/user/create', 'UserController@create');
+Route::post('/user/store', 'UserController@store');
+Route::get('/user', 'UserController@index');
+Route::put('/user/update/{id}', 'UserController@update');
+Route::delete('/user/delete/{id}', 'UserController@delete');
+
 //Session
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/session/store', 'SessionController@store');

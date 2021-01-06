@@ -36,7 +36,7 @@ class SectionController extends Controller
                 'department_id' => self::DEPARTMENT,
             ]);
             
-            $request->session()->flash('success', 'Secção criada com sucesso.');
+            $request->session()->flash('message', 'Secção criada com sucesso.');
             return view('section.create', compact('section'));
 
         } catch(PDOException $error) {
