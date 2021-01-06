@@ -18,6 +18,7 @@ class CreateSectionsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('description');
+            $table->integer('department_id')->default(1);
         });
     }
 

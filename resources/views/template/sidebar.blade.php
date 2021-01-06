@@ -77,6 +77,10 @@
             <a class="collapse-item" href="/command/create">Configurar tarefa</a>
             <a class="collapse-item" href="/commands">Ver tarefas</a>
             <hr>
+            <h6 class="collapse-header"><strong>Secções:</strong></h6>
+            <a class="collapse-item" href="/section/create">Adicionar secção</a>
+            <a class="collapse-item" href="/section">Ver todas as secções</a>
+            <hr>
           </div>
         </div>
       </li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
     }
 
     /**
@@ -32,9 +33,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => hash::generate($request->password),
+                'section_id' => $request->section_id
+            ]);
+        } catch(\PDOException $error) {
+            dd('error when trying to create the user. ' . $error->getMessage());
+        }
     }
 
     /**
