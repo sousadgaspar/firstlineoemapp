@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/server', 'ServerController@all');
+
+Route::get('/server/{server}/execute/command/{command}', 'CommandController@executeApi');

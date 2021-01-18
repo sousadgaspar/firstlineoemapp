@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ExecutedCommandHistory;
 
 class DashBoardController extends Controller
 {
     
     public function index () {
-        
-        return view('index');
+        $userHistory = ExecutedCommandHistory::where('user_id', \Auth::user()->id)->orderBy('created_at', 'desc')->get();
+
+        return view('index', compact('userHistory'));
 
     }
 

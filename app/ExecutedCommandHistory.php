@@ -25,4 +25,10 @@ class ExecutedCommandHistory extends IHistory
     public function setServerId ($serverId) {
         $this->server_id = $serverId;
     }
+
+    // public function server () {
+
+    //     //can't return the method belongsTo because it's not recognizing the interface of the Model. Its getting the IHistory interface
+    //     return belongsTo(Server::class);
+    // }
 }

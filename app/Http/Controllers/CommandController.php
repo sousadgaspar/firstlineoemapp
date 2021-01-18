@@ -87,4 +87,31 @@ class CommandController extends Controller
             return $error->getMessage();
         }
     }
+
+
+    public function executeApi ($server, $id) {
+        $command = Command::find($id);
+        $server = Server::find($server);
+        $command_sequence = explode(';', $command->command_sequence);
+        try{
+            \SSH::into(strtoupper($server->name))->run($command->command_sequence, function($output) use (&$result) {
+                $result .= $output . PHP_EOL;
+            });
+
+            // //Produce a history Object for recording the command and the output
+            // $history = ExecutedCommandHistoryFactory::run();
+
+            // $history->collect($command);
+            // $history->setOutput($result);
+            // $history->setUserId(\Auth::user()->id);
+            // $history->setServerId($server->id);
+
+            // $history->save();
+
+            return json_encode($result);
+
+        } catch(ErrorException $error) {
+            return json_encode($error->getMessage());
+        }
+    }
 }

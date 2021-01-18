@@ -10726,6 +10726,17 @@ a:focus {
   padding: 1rem;
 }
 
+.history-area {
+  position: relative;
+  height: 30rem;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  background-color: white;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
 .command-area {
   position: relative;
   height: 20rem;
@@ -10784,7 +10795,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.SXVxvpmcbHbnhHTMRmYljAHaKe%26pid%3DApi&f=1");
   background-position: center;
   background-size: cover;
 }

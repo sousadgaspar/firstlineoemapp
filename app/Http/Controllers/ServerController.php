@@ -7,6 +7,7 @@ use App\Server;
 use App\Solution;
 use App\Group;
 use App\Section;
+use App\Command;
 
 class ServerController extends Controller
 {
@@ -87,6 +88,14 @@ class ServerController extends Controller
             dd($server);
         }, $allServers->toArray());
         return $filteredServers->toJson();
+    }
+
+
+    public function executeCommand ($server, $command) {
+        $server = Server::find($server);
+        $command = Command::find($command);
+        
+        
     }
 
 }
